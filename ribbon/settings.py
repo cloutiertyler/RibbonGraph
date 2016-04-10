@@ -1,5 +1,5 @@
 """
-Django settings for api_graph project.
+Django settings for ribbon.
 
 For more information on this file, see
 https://docs.djangoproject.com/en/dev/topics/settings/
