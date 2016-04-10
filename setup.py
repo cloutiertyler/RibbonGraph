@@ -13,7 +13,7 @@ setup(
     packages=['ribbon'],
     include_package_data=True,
     license='MIT',
-    description='A Declarative Python Graph API',
+    description='A Declarative Graph API Django App',
     long_description=README,
     url='https://github.com/TheArtOfEngineering/RibbonGraph',
     author='Tyler F Cloutier',
