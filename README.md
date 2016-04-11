@@ -10,6 +10,10 @@ the users that has rules about how the users are allowed to use the graph.
 Therefore all that's required to have a social network is a declaration those
 rules. This is what RibbonGraph provides.
 
+> Why the name RibbonGraph? 
+
+> Well the idea is that RibbonGraph wraps all the potentially very complicated logic of social network into a neat little package.
+
 Requirements
 ------------
 As of now this app is meant for use with the [djangorestframework](http://www.django-rest-framework.org) and it uses that projects base class APIException for all GraphAPIErrors.
