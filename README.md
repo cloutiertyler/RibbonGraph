@@ -15,7 +15,7 @@ All you need to do is specify what *is* and *is not* allowed.
 
 > #### Why did you create RibbonGraph?
 
-> I created this package because I was fed up with complex endpoints, and wanted to find a better way to build my app, [Hungrosity](https://itunes.apple.com/us/app/hungrosity/id917006014)
+> I created this package because I was fed up with complex endpoints, and wanted to find a better way to build my app, [Hungrosity](https://itunes.apple.com/us/app/hungrosity/id917006014).
 
 User Guide
 ----------
