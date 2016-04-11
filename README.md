@@ -17,7 +17,9 @@ As of now this app is meant for use with the [djangorestframework](http://www.dj
 Quick start
 -----------
 
-1. Add "ribbon" to your INSTALLED_APPS setting like this:
+1. Run
+        pip install ribbon-graph
+2. Add "ribbon" to your INSTALLED_APPS setting like this:
 
         INSTALLED_APPS = [
             ...
