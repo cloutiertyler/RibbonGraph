@@ -18,6 +18,7 @@ Quick start
 -----------
 
 1. Run
+
         pip install ribbon-graph
 2. Add "ribbon" to your INSTALLED_APPS setting like this:
 
