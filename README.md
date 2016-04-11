@@ -45,28 +45,30 @@ For example when a user logs in you can request all of the user's information, p
 
 Let's look at what that request might look like:
 
-        https://my-app.com/nodes/23432?include=first_name,last_name,friends.include(first_name,last_name),received_friend_requests.include(sender,receiver)
+    https://my-app.com/nodes/23432?include=first_name,last_name,friends.include(first_name,last_name),received_friend_requests.include(sender,receiver)
 
 With is one call we are able to get all the friends and friend requests of user `23432` with a single request. Best of all we can easily add or remove fields extremely easily. This makes debugging and development significantly faster.
 
 We can create a similar POST endpoint that allows clients to create nodes in the graph. An update in this case is specified as JSON in the request body.
 
-        def post(self, request, node_type):
-            """
-            Applies the tree update rooted at the node being created.
-            """
-            user = request.user
-            api = GraphAPI(settings.NEO4J_URL, models=model_list)
-            create_dict = request.data
-            response_data = api.update_subgraph_at_node(user.id, 'create', create_dict, node_type=node_type)
-            return Response(response_data)
+    def post(self, request, node_type):
+        """
+        Applies the tree update rooted at the node being created.
+        """
+        user = request.user
+        api = GraphAPI(settings.NEO4J_URL, models=model_list)
+        create_dict = request.data
+        response_data = api.update_subgraph_at_node(user.id, 'create', create_dict, node_type=node_type)
+        return Response(response_data)
 
 The syntax for updates is very similar to the syntax for GET requests, with some small differences. Here's what sending a friend request might look like.
 
 url:
+
     https://my-app.com/nodes/FriendRequest
 
 body:
+
     {
         "sender":{
             "attach":{
