@@ -4,15 +4,16 @@ A Declarative Graph API Django App
 RibbonGraph is a Django app which provides a declarative permission layer to a
 Neo4j database. It is perfect for building social networking applications.
 
-The RibbonGraph philosophy is that a social graph is a shared resource for all
-the users that has rules about how the users are allowed to use the graph.
+The RibbonGraph philosophy is that client applications should be able to do whatever
+they want to the graph database, but ***only if they are allowed to***.
 
-Therefore all that's required to have a social network is a declaration those
-rules. This is what RibbonGraph provides.
+All you need to do is specify what *is* and *is not* allowed.
 
 > Why the name RibbonGraph? 
 
 > Well the idea is that RibbonGraph wraps all the potentially very complicated logic of social network into a neat little package.
+
+I created this package because I was fed up with complex endpoints, and wanted to find a better way to build my app, [Hungrosity](https://itunes.apple.com/us/app/hungrosity/id917006014)
 
 User Guide
 ----------
@@ -90,7 +91,40 @@ You may have noticed something is missing, however. That something is permission
 Permissions
 -----------
 
-Permissions are what define your GraphAPI. The philosophy of RibbonGraph is that clients should be able to make any change to the shared graph that they want, *as long as they're allowed*.
+Permissions are what define your GraphAPI. The philosophy of RibbonGraph is that clients should be able to make any change to the shared graph that they want, but only changes ***they are allowed to make***.
+
+RibbonGraph allows you to declaratively specify what clients are and are not allowed to do to the graph. This can be anything from ensure that all `FriendRequests` have a `receiver_has_seen` field, to ensuring that only receivers of `FriendRequest`s can make a friendship between themselves and the sender.
+
+The sky is the limit really.
+
+    class Friendship(Relationship):
+        def assert_allows_add_edge(self, graph, actor_id, node_id, id_to_add, tx):
+            """
+            
+            The actor is the receiver of the request.
+
+            Allow the receiver of the request to add the sender of the request to
+            its friends or add itself to the sender's friends.
+            
+            """
+            user_id = User.get_user_id(graph, node_id, tx)
+            user_id_to_add = User.get_user_id(graph, id_to_add, tx)
+
+            # Allow the receiver to add the sender to the receiver's friends.
+            if actor_id == user_id_to_add:
+                if not User.user_sent_friend_request_to_user(graph, user_id, actor_id, tx):
+                    raise PermissionDenied()
+                return
+
+            # Allow the sender to add the receiver to the sender's friends.
+            if actor_id == user_id:
+                if not User.user_sent_friend_request_to_user(graph, user_id_to_add, actor_id, tx):
+                    raise PermissionDenied()
+                return
+
+            raise PermissionDenied()
+
+Above we allow user `A` to add themselves to user `B`'s list of friends if and only if user `B` sent a friend request to user `A`. 
 
 And just like that we have a social network.
 
