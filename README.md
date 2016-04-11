@@ -9,11 +9,13 @@ they want to the graph database, but ***only if they are allowed to***.
 
 All you need to do is specify what *is* and *is not* allowed.
 
-> Why the name RibbonGraph? 
+> #### Why the name RibbonGraph? 
 
 > Well the idea is that RibbonGraph wraps all the potentially very complicated logic of social network into a neat little package.
 
-I created this package because I was fed up with complex endpoints, and wanted to find a better way to build my app, [Hungrosity](https://itunes.apple.com/us/app/hungrosity/id917006014)
+> #### Why did you create RibbonGraph?
+
+> I created this package because I was fed up with complex endpoints, and wanted to find a better way to build my app, [Hungrosity](https://itunes.apple.com/us/app/hungrosity/id917006014)
 
 User Guide
 ----------
