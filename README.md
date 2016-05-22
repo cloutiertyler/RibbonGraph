@@ -1,7 +1,9 @@
-# RibbonGraph
-A Declarative Graph API Django App
+<p align="center">
+<img src="https://raw.githubusercontent.com/TheArtOfEngineering/RibbonGraph/assets/ribbon.png" width="224" alt="Edge">
+<br/>A Declarative Graph API Django App<br/>
+</p>
 
-![RibbonGraph](https://raw.githubusercontent.com/TheArtOfEngineering/RibbonGraph/assets/ribbon.png)
+# RibbonGraph
 
 RibbonGraph is a Django app which provides a declarative permission layer to a
 Neo4j database. It is perfect for building social networking applications.
