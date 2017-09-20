@@ -5,6 +5,8 @@
 
 # RibbonGraph
 
+### NOTE: RibbonGraph is a only *proof of concept* for the larger philosophy of to build graph-based APIs.
+
 RibbonGraph is a Django app which provides a declarative permission layer to a
 Neo4j database. It is perfect for building social networking applications.
 
